@@ -20,6 +20,11 @@
 		6011D8D2173B01C500851743 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6011D8D0173B01C500851743 /* MainStoryboard_iPad.storyboard */; };
 		6011D8D5173B01C500851743 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6011D8D4173B01C500851743 /* MasterViewController.m */; };
 		6011D8D8173B01C500851743 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6011D8D7173B01C500851743 /* DetailViewController.m */; };
+		6011D8E2173B04BF00851743 /* DataEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 6011D8E1173B04BF00851743 /* DataEntry.m */; };
+		6011D8E5173B075F00851743 /* DataEntryDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 6011D8E4173B075F00851743 /* DataEntryDetail.m */; };
+		6011D8E9173B147D00851743 /* thumb_green.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6011D8E6173B147D00851743 /* thumb_green.jpg */; };
+		6011D8EA173B147D00851743 /* thumb_orange.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6011D8E7173B147D00851743 /* thumb_orange.jpg */; };
+		6011D8EB173B147D00851743 /* thumb_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6011D8E8173B147D00851743 /* thumb_red.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +47,13 @@
 		6011D8D4173B01C500851743 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		6011D8D6173B01C500851743 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		6011D8D7173B01C500851743 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		6011D8E0173B04BF00851743 /* DataEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataEntry.h; sourceTree = "<group>"; };
+		6011D8E1173B04BF00851743 /* DataEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataEntry.m; sourceTree = "<group>"; };
+		6011D8E3173B075F00851743 /* DataEntryDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataEntryDetail.h; sourceTree = "<group>"; };
+		6011D8E4173B075F00851743 /* DataEntryDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataEntryDetail.m; sourceTree = "<group>"; };
+		6011D8E6173B147D00851743 /* thumb_green.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumb_green.jpg; sourceTree = "<group>"; };
+		6011D8E7173B147D00851743 /* thumb_orange.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumb_orange.jpg; sourceTree = "<group>"; };
+		6011D8E8173B147D00851743 /* thumb_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumb_red.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,14 +100,12 @@
 		6011D8BB173B01C500851743 /* OpenVIE */ = {
 			isa = PBXGroup;
 			children = (
-				6011D8C4173B01C500851743 /* AppDelegate.h */,
-				6011D8C5173B01C500851743 /* AppDelegate.m */,
-				6011D8CD173B01C500851743 /* MainStoryboard_iPhone.storyboard */,
-				6011D8D0173B01C500851743 /* MainStoryboard_iPad.storyboard */,
-				6011D8D3173B01C500851743 /* MasterViewController.h */,
-				6011D8D4173B01C500851743 /* MasterViewController.m */,
-				6011D8D6173B01C500851743 /* DetailViewController.h */,
-				6011D8D7173B01C500851743 /* DetailViewController.m */,
+				6011D8E6173B147D00851743 /* thumb_green.jpg */,
+				6011D8E7173B147D00851743 /* thumb_orange.jpg */,
+				6011D8E8173B147D00851743 /* thumb_red.jpg */,
+				6011D8EC173B14A500851743 /* Icons */,
+				6011D8DF173B045900851743 /* Model */,
+				6011D8DE173B042900851743 /* GUI */,
 				6011D8BC173B01C500851743 /* Supporting Files */,
 			);
 			path = OpenVIE;
@@ -113,6 +123,39 @@
 				6011D8CB173B01C500851743 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6011D8DE173B042900851743 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				6011D8C4173B01C500851743 /* AppDelegate.h */,
+				6011D8C5173B01C500851743 /* AppDelegate.m */,
+				6011D8CD173B01C500851743 /* MainStoryboard_iPhone.storyboard */,
+				6011D8D0173B01C500851743 /* MainStoryboard_iPad.storyboard */,
+				6011D8D3173B01C500851743 /* MasterViewController.h */,
+				6011D8D4173B01C500851743 /* MasterViewController.m */,
+				6011D8D6173B01C500851743 /* DetailViewController.h */,
+				6011D8D7173B01C500851743 /* DetailViewController.m */,
+			);
+			name = GUI;
+			sourceTree = "<group>";
+		};
+		6011D8DF173B045900851743 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6011D8E0173B04BF00851743 /* DataEntry.h */,
+				6011D8E1173B04BF00851743 /* DataEntry.m */,
+				6011D8E3173B075F00851743 /* DataEntryDetail.h */,
+				6011D8E4173B075F00851743 /* DataEntryDetail.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		6011D8EC173B14A500851743 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +215,9 @@
 				6011D8CC173B01C500851743 /* Default-568h@2x.png in Resources */,
 				6011D8CF173B01C500851743 /* MainStoryboard_iPhone.storyboard in Resources */,
 				6011D8D2173B01C500851743 /* MainStoryboard_iPad.storyboard in Resources */,
+				6011D8E9173B147D00851743 /* thumb_green.jpg in Resources */,
+				6011D8EA173B147D00851743 /* thumb_orange.jpg in Resources */,
+				6011D8EB173B147D00851743 /* thumb_red.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +232,8 @@
 				6011D8C6173B01C500851743 /* AppDelegate.m in Sources */,
 				6011D8D5173B01C500851743 /* MasterViewController.m in Sources */,
 				6011D8D8173B01C500851743 /* DetailViewController.m in Sources */,
+				6011D8E2173B04BF00851743 /* DataEntry.m in Sources */,
+				6011D8E5173B075F00851743 /* DataEntryDetail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

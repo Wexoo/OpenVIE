@@ -6,9 +6,17 @@
 //  Copyright (c) 2013 Philipp Weixlbaumer. All rights reserved.
 //
 
-#import "MasterViewController.h"
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) //1
 
+#define kLatestKivaLoansURL [NSURL URLWithString:@"http://data.wien.gv.at/daten/wfs?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:CITYBIKEOGD&srsName=EPSG:4326&outputFormat=json"] //2
+
+#import "MasterViewController.h"
 #import "DetailViewController.h"
+
+#import "DataEntry.h"
+#import "DataEntryDetail.h"
+
+
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
@@ -16,6 +24,8 @@
 @end
 
 @implementation MasterViewController
+
+@synthesize dataEntries = _dataEntries;
 
 - (void)awakeFromNib
 {
@@ -35,6 +45,30 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    self.title = @"OpenVIE - List";
+    
+    dispatch_async(kBgQueue, ^{
+        NSData* data = [NSData dataWithContentsOfURL:
+                        kLatestKivaLoansURL];
+        [self performSelectorOnMainThread:@selector(fetchedData:)
+                               withObject:data waitUntilDone:YES];
+    });
+}
+
+- (void)fetchedData:(NSData *)responseData {
+    //parse out the json data
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization
+                          JSONObjectWithData:responseData //1
+                          options:kNilOptions
+                          error:&error];
+
+    NSLog(@"dic: %@", json);
+    
+    NSArray* latestLoans = [json objectForKey:@"STATION"]; //2
+    
+    NSLog(@"STATION: %@", latestLoans); //3
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,17 +96,28 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return _dataEntries.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    UITableViewCell *cell = [tableView
+                             dequeueReusableCellWithIdentifier:@"DataEntryCell"];
+    DataEntryDetail *dataEntry = [self.dataEntries objectAtIndex:indexPath.row];
+    cell.textLabel.text = dataEntry.data.title;
+    cell.imageView.image = dataEntry.thumbImage;
     return cell;
 }
+
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+//
+//    NSDate *object = _objects[indexPath.row];
+//    cell.textLabel.text = [object description];
+//    return cell;
+//}
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
