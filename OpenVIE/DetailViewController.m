@@ -9,7 +9,6 @@
 #import "DetailViewController.h"
 #import "DataEntry.h"
 #import "DataEntryDetail.h"
-#import "UIImageExtras.h"
 #import "SVProgressHUD.h"
 
 @interface DetailViewController ()
@@ -18,8 +17,6 @@
 @end
 
 @implementation DetailViewController
-
-@synthesize picker = _picker;
 
 #pragma mark - Managing the detail item
 
@@ -39,20 +36,12 @@
 
 - (void)configureView
 {
-    // Update the user interface for the detail item.
-    self.rateView.notSelectedImage = [UIImage imageNamed:@"shockedface2_empty.png"];
-    self.rateView.halfSelectedImage = [UIImage imageNamed:@"shockedface2_half.png"];
-    self.rateView.fullSelectedImage = [UIImage imageNamed:@"shockedface2_full.png"];
-    self.rateView.editable = YES;
-    self.rateView.maxRating = 5;
-    self.rateView.delegate = self;
-    
-    
     if (self.detailItem) {
         self.detailDescriptionLabel.text = self.detailItem.data.title;
-        self.titleField.text = self.detailItem.data.title;
-        self.rateView.rating = self.detailItem.data.district;
-        self.imageView.image = self.detailItem.fullImage;
+        self.titleLabel.text = self.detailItem.data.title;
+        [self.favoriteCheck setOn:self.detailItem.data.favorite];
+//        self.rateView.rating = self.detailItem.data.district;
+//        self.imageView.image = self.detailItem.fullImage;
         
     }
 }
@@ -86,87 +75,7 @@
     self.masterPopoverController = nil;
 }
 
-- (IBAction)titleFieldTextChanged:(id)sender {
-    self.detailItem.data.title = self.titleField.text;
+- (IBAction)favoriteSwitched:(UISwitch *)sender {
+    self.detailItem.data.favorite = sender.isOn;
 }
-
-#pragma mark UITextFieldDelegate
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
-}
-
-#pragma mark RateViewDelegate
-
-- (void)rateView:(RateView *)rateView ratingDidChange:(float)district {
-    self.detailItem.data.district = district;
-}
-
-- (IBAction)addPictureTapped:(id)sender {
-    if (self.picker == nil) {
-        
-        // 1) Show status
-        [SVProgressHUD showWithStatus:@"Loading picker..."];
-        
-        // 2) Get a concurrent queue form the system
-        dispatch_queue_t concurrentQueue =
-        dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        
-        // 3) Load picker in background
-        dispatch_async(concurrentQueue, ^{
-            
-            self.picker = [[UIImagePickerController alloc] init];
-            self.picker.delegate = self;
-            self.picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            self.picker.allowsEditing = NO;
-            
-            // 4) Present picker in main thread
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.navigationController presentModalViewController:_picker animated:YES];
-                [SVProgressHUD dismiss];
-            });
-            
-        });
-        
-    }  else {
-        [self.navigationController presentModalViewController:_picker animated:YES];
-    }
-}
-
-#pragma mark UIImagePickerControllerDelegate
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
-    [self dismissModalViewControllerAnimated:YES];
-    
-    UIImage *fullImage = (UIImage *) [info objectForKey:UIImagePickerControllerOriginalImage];
-    
-    // 1) Show status
-    [SVProgressHUD showWithStatus:@"Resizing image..."];
-    
-    // 2) Get a concurrent queue form the system
-    dispatch_queue_t concurrentQueue =
-    dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    
-    // 3) Resize image in background
-    dispatch_async(concurrentQueue, ^{
-        
-        UIImage *thumbImage = [fullImage imageByScalingAndCroppingForSize:CGSizeMake(44, 44)];
-        
-        // 4) Present image in main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.detailItem.fullImage = fullImage;
-            self.detailItem.thumbImage = thumbImage;
-            self.imageView.image = fullImage;
-            [SVProgressHUD dismiss];
-        });
-    });
-    
-}
-
 @end

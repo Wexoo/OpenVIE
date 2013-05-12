@@ -25,6 +25,7 @@
 {
     if ((self = [super init])) {
         self.data = [[DataEntry alloc] initWithProperties:title apiId:apiId coordX:coordX coordY:coordY district:district];
+        self.data.favorite = NO;
         self.thumbImage = thumbImage;
         self.fullImage = fullImage;
     }
@@ -37,10 +38,7 @@
                   coordX:(float)coordX
                   coordY:(float)coordY
 {
-    if ((self = [super init])) {
-        self.data = [[DataEntry alloc] initWithProperties:title apiId:apiId coordX:coordX coordY:coordY district:district];
-    }
-    return self;
+    return [self initWithProperties:title apiId:apiId district:district coordX:coordX coordY:coordY thumbImage:nil fullImage:nil];
 }
 
 

@@ -34,22 +34,22 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "OpenVIE/DetailViewController.h"
-         timestampString = "390074956.922064"
+         timestampString = "390094757.977403"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "10"
-         endingLineNumber = "10">
+         startingLineNumber = "9"
+         endingLineNumber = "9">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "OpenVIE/DetailViewController.m"
-         timestampString = "390092592.432544"
+         timestampString = "390093559.707965"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "28"
-         endingLineNumber = "28"
+         startingLineNumber = "25"
+         endingLineNumber = "25"
          landmarkName = "-setDetailItem:"
          landmarkType = "5">
       </FileBreakpoint>

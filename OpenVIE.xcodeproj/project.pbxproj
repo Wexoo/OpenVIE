@@ -25,10 +25,6 @@
 		6011D8E9173B147D00851743 /* thumb_green.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6011D8E6173B147D00851743 /* thumb_green.jpg */; };
 		6011D8EA173B147D00851743 /* thumb_orange.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6011D8E7173B147D00851743 /* thumb_orange.jpg */; };
 		6011D8EB173B147D00851743 /* thumb_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6011D8E8173B147D00851743 /* thumb_red.jpg */; };
-		60FDE777173FEBD200AE4CAC /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60FDE771173FEBD200AE4CAC /* RateView.m */; };
-		60FDE778173FEBD200AE4CAC /* shockedface2_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FDE772173FEBD200AE4CAC /* shockedface2_empty.png */; };
-		60FDE779173FEBD200AE4CAC /* shockedface2_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FDE773173FEBD200AE4CAC /* shockedface2_full.png */; };
-		60FDE77A173FEBD200AE4CAC /* shockedface2_half.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FDE774173FEBD200AE4CAC /* shockedface2_half.png */; };
 		60FDE77B173FEBD200AE4CAC /* UIImageExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 60FDE776173FEBD200AE4CAC /* UIImageExtras.m */; };
 		60FDE79E1740533C00AE4CAC /* icon_wien_at_ogd_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FDE79C1740533C00AE4CAC /* icon_wien_at_ogd_default.png */; };
 		60FDE79F1740533C00AE4CAC /* icon_wien_at_ogd_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FDE79D1740533C00AE4CAC /* icon_wien_at_ogd_retina.png */; };
@@ -66,11 +62,6 @@
 		6011D8E6173B147D00851743 /* thumb_green.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumb_green.jpg; sourceTree = "<group>"; };
 		6011D8E7173B147D00851743 /* thumb_orange.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumb_orange.jpg; sourceTree = "<group>"; };
 		6011D8E8173B147D00851743 /* thumb_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumb_red.jpg; sourceTree = "<group>"; };
-		60FDE770173FEBD200AE4CAC /* RateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateView.h; sourceTree = "<group>"; };
-		60FDE771173FEBD200AE4CAC /* RateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
-		60FDE772173FEBD200AE4CAC /* shockedface2_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shockedface2_empty.png; sourceTree = "<group>"; };
-		60FDE773173FEBD200AE4CAC /* shockedface2_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shockedface2_full.png; sourceTree = "<group>"; };
-		60FDE774173FEBD200AE4CAC /* shockedface2_half.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shockedface2_half.png; sourceTree = "<group>"; };
 		60FDE775173FEBD200AE4CAC /* UIImageExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageExtras.h; sourceTree = "<group>"; };
 		60FDE776173FEBD200AE4CAC /* UIImageExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageExtras.m; sourceTree = "<group>"; };
 		60FDE79C1740533C00AE4CAC /* icon_wien_at_ogd_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_wien_at_ogd_default.png; sourceTree = "<group>"; };
@@ -187,9 +178,6 @@
 			children = (
 				60FDE79C1740533C00AE4CAC /* icon_wien_at_ogd_default.png */,
 				60FDE79D1740533C00AE4CAC /* icon_wien_at_ogd_retina.png */,
-				60FDE772173FEBD200AE4CAC /* shockedface2_empty.png */,
-				60FDE773173FEBD200AE4CAC /* shockedface2_full.png */,
-				60FDE774173FEBD200AE4CAC /* shockedface2_half.png */,
 				6011D8E6173B147D00851743 /* thumb_green.jpg */,
 				6011D8E7173B147D00851743 /* thumb_orange.jpg */,
 				6011D8E8173B147D00851743 /* thumb_red.jpg */,
@@ -202,8 +190,6 @@
 			children = (
 				60FDE7A81740561000AE4CAC /* SVProgressHUD.h */,
 				60FDE7A91740561000AE4CAC /* SVProgressHUD.m */,
-				60FDE770173FEBD200AE4CAC /* RateView.h */,
-				60FDE771173FEBD200AE4CAC /* RateView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -277,9 +263,6 @@
 				6011D8E9173B147D00851743 /* thumb_green.jpg in Resources */,
 				6011D8EA173B147D00851743 /* thumb_orange.jpg in Resources */,
 				6011D8EB173B147D00851743 /* thumb_red.jpg in Resources */,
-				60FDE778173FEBD200AE4CAC /* shockedface2_empty.png in Resources */,
-				60FDE779173FEBD200AE4CAC /* shockedface2_full.png in Resources */,
-				60FDE77A173FEBD200AE4CAC /* shockedface2_half.png in Resources */,
 				60FDE79E1740533C00AE4CAC /* icon_wien_at_ogd_default.png in Resources */,
 				60FDE79F1740533C00AE4CAC /* icon_wien_at_ogd_retina.png in Resources */,
 				60FDE7A31740540C00AE4CAC /* Default.png in Resources */,
@@ -301,7 +284,6 @@
 				6011D8D8173B01C500851743 /* DetailViewController.m in Sources */,
 				6011D8E2173B04BF00851743 /* DataEntry.m in Sources */,
 				6011D8E5173B075F00851743 /* DataEntryDetail.m in Sources */,
-				60FDE777173FEBD200AE4CAC /* RateView.m in Sources */,
 				60FDE77B173FEBD200AE4CAC /* UIImageExtras.m in Sources */,
 				60FDE7AA1740561000AE4CAC /* SVProgressHUD.m in Sources */,
 			);
