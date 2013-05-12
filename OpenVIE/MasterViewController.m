@@ -49,13 +49,18 @@
     self.title = @"OpenVIE - List";
     
     if (!self.openVieData) {
-    dispatch_async(kBgQueue, ^{
-        NSString *url = [NSString stringWithContentsOfURL:kLatestKivaLoansURL encoding:NSISOLatin1StringEncoding error:nil];
-        NSData* data = [url dataUsingEncoding:NSUTF8StringEncoding];
-        [self performSelectorOnMainThread:@selector(fetchedData:)
-                               withObject:data waitUntilDone:YES];
-    });
+        dispatch_async(kBgQueue, ^{
+            NSString *url = [NSString stringWithContentsOfURL:kLatestKivaLoansURL encoding:NSISOLatin1StringEncoding error:nil];
+            NSData* data = [url dataUsingEncoding:NSUTF8StringEncoding];
+            [self performSelectorOnMainThread:@selector(fetchedData:)
+                                   withObject:data waitUntilDone:YES];
+        });
     }
+    
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                              initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                              target:self action:@selector(addTapped:)];
 }
 
 - (void)fetchedData:(NSData *)responseData {
@@ -74,12 +79,12 @@
         NSDictionary *propArray = [feature objectForKey:@"properties"];
         
         DataEntryDetail *newDataEntry = [[DataEntryDetail alloc] initWithProperties:[propArray objectForKey:@"STATION"]
-                                                                              apiId:[feature objectForKey:@"id"]
+                         apiId:[feature objectForKey:@"id"]
                                                                            district:(int)[propArray objectForKey:@"BEZIRK"]
                                                                              coordX:(int)[coordArray objectAtIndex:0]
                                                                              coordY:(int)[coordArray objectAtIndex:1]
-                                         thumbImage:[UIImage imageNamed:@"thumb_green.jpg"]
-                                         fullImage:[UIImage imageNamed:@"thumb_green.jpg"]];
+                                                                         thumbImage:[UIImage imageNamed:@"thumb_green.jpg"]
+                                                                          fullImage:[UIImage imageNamed:@"thumb_green.jpg"]];
         [self insertNewObject:self newDataEntry:newDataEntry];
     }
 }
@@ -102,6 +107,18 @@
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+- (void)addTapped:(id)sender {
+    DataEntryDetail *newData = [[DataEntryDetail alloc] initWithProperties:@"New data" apiId:@"xxx" district:1 coordX:1.6f coordY:1.6f];
+    [_openVieData addObject:newData];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_openVieData.count-1 inSection:0];
+    NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:YES];
+    
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    [self performSegueWithIdentifier:@"TableToDetail" sender:self];
+}
+
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -117,8 +134,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView
-                             dequeueReusableCellWithIdentifier:@"DataEntryCell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DataEntryCell"];
     DataEntryDetail *dataEntry = [self.openVieData objectAtIndex:indexPath.row];
     cell.textLabel.text = dataEntry.data.title;
     cell.imageView.image = dataEntry.thumbImage;

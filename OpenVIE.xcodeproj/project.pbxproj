@@ -30,7 +30,13 @@
 		60FDE779173FEBD200AE4CAC /* shockedface2_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FDE773173FEBD200AE4CAC /* shockedface2_full.png */; };
 		60FDE77A173FEBD200AE4CAC /* shockedface2_half.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FDE774173FEBD200AE4CAC /* shockedface2_half.png */; };
 		60FDE77B173FEBD200AE4CAC /* UIImageExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 60FDE776173FEBD200AE4CAC /* UIImageExtras.m */; };
-		60FDE77D173FEC1800AE4CAC /* logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FDE77C173FEC1800AE4CAC /* logo1.png */; };
+		60FDE79E1740533C00AE4CAC /* icon_wien_at_ogd_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FDE79C1740533C00AE4CAC /* icon_wien_at_ogd_default.png */; };
+		60FDE79F1740533C00AE4CAC /* icon_wien_at_ogd_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FDE79D1740533C00AE4CAC /* icon_wien_at_ogd_retina.png */; };
+		60FDE7A31740540C00AE4CAC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FDE7A21740540C00AE4CAC /* Default.png */; };
+		60FDE7A5174054F500AE4CAC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FDE7A4174054F400AE4CAC /* Default@2x.png */; };
+		60FDE7A71740550400AE4CAC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FDE7A61740550400AE4CAC /* Default-568h@2x.png */; };
+		60FDE7AA1740561000AE4CAC /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 60FDE7A91740561000AE4CAC /* SVProgressHUD.m */; };
+		60FDE7AC1740563900AE4CAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60FDE7AB1740563900AE4CAC /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +73,14 @@
 		60FDE774173FEBD200AE4CAC /* shockedface2_half.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shockedface2_half.png; sourceTree = "<group>"; };
 		60FDE775173FEBD200AE4CAC /* UIImageExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageExtras.h; sourceTree = "<group>"; };
 		60FDE776173FEBD200AE4CAC /* UIImageExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageExtras.m; sourceTree = "<group>"; };
-		60FDE77C173FEC1800AE4CAC /* logo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo1.png; sourceTree = "<group>"; };
+		60FDE79C1740533C00AE4CAC /* icon_wien_at_ogd_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_wien_at_ogd_default.png; sourceTree = "<group>"; };
+		60FDE79D1740533C00AE4CAC /* icon_wien_at_ogd_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_wien_at_ogd_retina.png; sourceTree = "<group>"; };
+		60FDE7A21740540C00AE4CAC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		60FDE7A4174054F400AE4CAC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		60FDE7A61740550400AE4CAC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		60FDE7A81740561000AE4CAC /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		60FDE7A91740561000AE4CAC /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		60FDE7AB1740563900AE4CAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60FDE7AC1740563900AE4CAC /* QuartzCore.framework in Frameworks */,
 				6011D8B6173B01C500851743 /* UIKit.framework in Frameworks */,
 				6011D8B8173B01C500851743 /* Foundation.framework in Frameworks */,
 				6011D8BA173B01C500851743 /* CoreGraphics.framework in Frameworks */,
@@ -87,6 +101,10 @@
 		6011D8A9173B01C500851743 = {
 			isa = PBXGroup;
 			children = (
+				60FDE7AB1740563900AE4CAC /* QuartzCore.framework */,
+				60FDE7A61740550400AE4CAC /* Default-568h@2x.png */,
+				60FDE7A4174054F400AE4CAC /* Default@2x.png */,
+				60FDE7A21740540C00AE4CAC /* Default.png */,
 				6011D8BB173B01C500851743 /* OpenVIE */,
 				6011D8B4173B01C500851743 /* Frameworks */,
 				6011D8B3173B01C500851743 /* Products */,
@@ -167,7 +185,8 @@
 		6011D8EC173B14A500851743 /* Icon */ = {
 			isa = PBXGroup;
 			children = (
-				60FDE77C173FEC1800AE4CAC /* logo1.png */,
+				60FDE79C1740533C00AE4CAC /* icon_wien_at_ogd_default.png */,
+				60FDE79D1740533C00AE4CAC /* icon_wien_at_ogd_retina.png */,
 				60FDE772173FEBD200AE4CAC /* shockedface2_empty.png */,
 				60FDE773173FEBD200AE4CAC /* shockedface2_full.png */,
 				60FDE774173FEBD200AE4CAC /* shockedface2_half.png */,
@@ -181,6 +200,8 @@
 		60FDE760173FE75A00AE4CAC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				60FDE7A81740561000AE4CAC /* SVProgressHUD.h */,
+				60FDE7A91740561000AE4CAC /* SVProgressHUD.m */,
 				60FDE770173FEBD200AE4CAC /* RateView.h */,
 				60FDE771173FEBD200AE4CAC /* RateView.m */,
 			);
@@ -259,7 +280,11 @@
 				60FDE778173FEBD200AE4CAC /* shockedface2_empty.png in Resources */,
 				60FDE779173FEBD200AE4CAC /* shockedface2_full.png in Resources */,
 				60FDE77A173FEBD200AE4CAC /* shockedface2_half.png in Resources */,
-				60FDE77D173FEC1800AE4CAC /* logo1.png in Resources */,
+				60FDE79E1740533C00AE4CAC /* icon_wien_at_ogd_default.png in Resources */,
+				60FDE79F1740533C00AE4CAC /* icon_wien_at_ogd_retina.png in Resources */,
+				60FDE7A31740540C00AE4CAC /* Default.png in Resources */,
+				60FDE7A5174054F500AE4CAC /* Default@2x.png in Resources */,
+				60FDE7A71740550400AE4CAC /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +303,7 @@
 				6011D8E5173B075F00851743 /* DataEntryDetail.m in Sources */,
 				60FDE777173FEBD200AE4CAC /* RateView.m in Sources */,
 				60FDE77B173FEBD200AE4CAC /* UIImageExtras.m in Sources */,
+				60FDE7AA1740561000AE4CAC /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
