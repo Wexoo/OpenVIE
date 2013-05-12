@@ -16,11 +16,18 @@
 @property (strong) UIImage *thumbImage;
 @property (strong) UIImage *fullImage;
 
-- (id)initWithProperties:(NSString*)title
-             rating:(float)rating
+- (id)initWithProperties:(NSString *)title
+                   apiId:(NSString *)apiId 
+             district:(int)district
              coordX:(float)coordX
              coordY:(float)coordY
          thumbImage:(UIImage *)thumbImage
           fullImage:(UIImage *)fullImage;
+
+- (id)initWithProperties:(NSString *)title
+                   apiId:(NSString *)apiId
+                district:(int)district
+                  coordX:(float)coordX
+                  coordY:(float)coordY;
 
 @end

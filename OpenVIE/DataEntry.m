@@ -11,20 +11,24 @@
 @implementation DataEntry
 
 @synthesize title = _title;
+@synthesize apiId = _apiId;
 @synthesize coordX = _coordX;
 @synthesize coordY = _coordY;
-@synthesize rating = _rating;
+@synthesize district = _district;
+@synthesize favorite = _favorite;
+
 
 - (id) initWithProperties:(NSString *)title
+                    apiId:(NSString *)apiId
                    coordX:(float)coordX
                    coordY:(float)coordY
-                   rating:(float)rating
+                 district:(float)district
 {
     if ((self = [super init])) {
         self.title = title;
         self.coordX = coordX;
         self.coordY = coordY;
-        self.rating = rating;
+        self.district = district;
     }
     return self;
 }

@@ -15,14 +15,33 @@
 @synthesize thumbImage = _thumbImage;
 @synthesize fullImage = _fullImage;
 
--(id) initWithProperties:(NSString *)title rating:(float)rating coordX:(float)coordX coordY:(float)coordY thumbImage:(UIImage *)thumbImage fullImage:(UIImage *)fullImage
+-(id) initWithProperties:(NSString *)title
+                   apiId:(NSString *)apiId
+                district:(int)district
+                  coordX:(float)coordX
+                  coordY:(float)coordY
+              thumbImage:(UIImage *)thumbImage
+               fullImage:(UIImage *)fullImage
 {
     if ((self = [super init])) {
-        self.data = [[DataEntry alloc] initWithProperties:title coordX:coordX coordY:coordY rating:rating];
+        self.data = [[DataEntry alloc] initWithProperties:title apiId:apiId coordX:coordX coordY:coordY district:district];
         self.thumbImage = thumbImage;
         self.fullImage = fullImage;
     }
     return self;
 }
+
+-(id) initWithProperties:(NSString *)title
+                   apiId:(NSString *)apiId
+                district:(int)district
+                  coordX:(float)coordX
+                  coordY:(float)coordY
+{
+    if ((self = [super init])) {
+        self.data = [[DataEntry alloc] initWithProperties:title apiId:apiId coordX:coordX coordY:coordY district:district];
+    }
+    return self;
+}
+
 
 @end

@@ -11,13 +11,16 @@
 @interface DataEntry : NSObject
 
 @property (strong) NSString *title;
+@property (strong) NSString *apiId;
 @property (assign) float coordX;
 @property (assign) float coordY;
-@property (assign) float rating;
+@property (assign) int district;
+@property (assign) BOOL favorite;
+
 
 - (id) initWithProperties:(NSString *)title
+                    apiId:(NSString *)apiId
                    coordX:(float) coordX
                    coordY:(float) coordY
-                   rating:(float)rating;
-
+                 district:(float)district;
 @end

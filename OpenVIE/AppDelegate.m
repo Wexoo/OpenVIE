@@ -14,15 +14,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    DataEntryDetail *entry1 = [[DataEntryDetail alloc] initWithProperties:@"Nestroyplatz" rating:5 coordX:1.6f coordY:1.6f thumbImage:[UIImage imageNamed:@"thumb_green.jpg"] fullImage:[UIImage imageNamed:@"thumb_green.jpg"]];
-
-    DataEntryDetail *entry2 = [[DataEntryDetail alloc] initWithProperties:@"Schwedenplatz" rating:3 coordX:1.6f coordY:1.6f thumbImage:[UIImage imageNamed:@"thumb_orange.jpg"] fullImage:[UIImage imageNamed:@"thumb_orange.jpg"]];
+    NSMutableArray *dataEntries = [[NSMutableArray alloc] init];
     
-    NSMutableArray *dataEntries = [NSMutableArray arrayWithObjects: entry1, entry2, nil];
+//    DataEntryDetail *entry1 = [[DataEntryDetail alloc] initWithProperties:@"AAAA" apiId:@"CITYBIKEOGD.3533" district:1020 coordX:1.6f coordY:1.6f thumbImage:[UIImage imageNamed:@"thumb_green.jpg"] fullImage:[UIImage imageNamed:@"thumb_green.jpg"]];
+//
+//    [dataEntries addObject:entry1];
     
-    UINavigationController * navController = (UINavigationController *) self.window.rootViewController;
-    MasterViewController * masterController = [navController.viewControllers objectAtIndex:0];
-    masterController.dataEntries = dataEntries;
+//    UINavigationController * navController = (UINavigationController *) self.window.rootViewController;
+//    MasterViewController * masterController = [navController.viewControllers objectAtIndex:0];
+//    masterController.dataEntries = dataEntries;
     
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {

@@ -17,15 +17,14 @@
 #import "DataEntryDetail.h"
 
 
-
-@interface MasterViewController () {
-    NSMutableArray *_objects;
-}
+@interface MasterViewController ()
+@property (nonatomic, strong)  NSMutableArray *openVieData;
 @end
+
 
 @implementation MasterViewController
 
-@synthesize dataEntries = _dataEntries;
+@synthesize openVieData = _openVieData;
 
 - (void)awakeFromNib
 {
@@ -39,36 +38,50 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
+    
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     self.title = @"OpenVIE - List";
     
+    if (!self.openVieData) {
     dispatch_async(kBgQueue, ^{
-        NSData* data = [NSData dataWithContentsOfURL:
-                        kLatestKivaLoansURL];
+        NSString *url = [NSString stringWithContentsOfURL:kLatestKivaLoansURL encoding:NSISOLatin1StringEncoding error:nil];
+        NSData* data = [url dataUsingEncoding:NSUTF8StringEncoding];
         [self performSelectorOnMainThread:@selector(fetchedData:)
                                withObject:data waitUntilDone:YES];
     });
+    }
 }
 
 - (void)fetchedData:(NSData *)responseData {
     //parse out the json data
     NSError* error;
     NSDictionary* json = [NSJSONSerialization
-                          JSONObjectWithData:responseData //1
+                          JSONObjectWithData:responseData
                           options:kNilOptions
                           error:&error];
-
-    NSLog(@"dic: %@", json);
     
-    NSArray* latestLoans = [json objectForKey:@"STATION"]; //2
+    if(error) NSLog(@"%@", error);
     
-    NSLog(@"STATION: %@", latestLoans); //3
+    for(NSDictionary *feature in [json objectForKey:@"features"]){
+        NSDictionary *geometryArray = [feature objectForKey:@"geometry"];
+        NSArray *coordArray = [geometryArray objectForKey:@"coordinates"];
+        NSDictionary *propArray = [feature objectForKey:@"properties"];
+        
+        DataEntryDetail *newDataEntry = [[DataEntryDetail alloc] initWithProperties:[propArray objectForKey:@"STATION"]
+                                                                              apiId:[feature objectForKey:@"id"]
+                                                                           district:(int)[propArray objectForKey:@"BEZIRK"]
+                                                                             coordX:(int)[coordArray objectAtIndex:0]
+                                                                             coordY:(int)[coordArray objectAtIndex:1]
+                                         thumbImage:[UIImage imageNamed:@"thumb_green.jpg"]
+                                         fullImage:[UIImage imageNamed:@"thumb_green.jpg"]];
+        [self insertNewObject:self newDataEntry:newDataEntry];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,11 +91,13 @@
 }
 
 - (void)insertNewObject:(id)sender
+           newDataEntry:(DataEntryDetail *)newDataEntry
 {
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
+    if (!self.openVieData) {
+        self.openVieData = [[NSMutableArray alloc] init];
     }
-    [_objects insertObject:[NSDate date] atIndex:0];
+    [self.openVieData insertObject:newDataEntry atIndex:0];
+    
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -96,7 +111,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _dataEntries.count;
+    return self.openVieData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -104,20 +119,11 @@
 {
     UITableViewCell *cell = [tableView
                              dequeueReusableCellWithIdentifier:@"DataEntryCell"];
-    DataEntryDetail *dataEntry = [self.dataEntries objectAtIndex:indexPath.row];
+    DataEntryDetail *dataEntry = [self.openVieData objectAtIndex:indexPath.row];
     cell.textLabel.text = dataEntry.data.title;
     cell.imageView.image = dataEntry.thumbImage;
     return cell;
 }
-
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-//
-//    NSDate *object = _objects[indexPath.row];
-//    cell.textLabel.text = [object description];
-//    return cell;
-//}
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -128,44 +134,56 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
+        [self.openVieData removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
 }
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+- (void)viewWillAppear:(BOOL)animated
 {
+    [self.tableView reloadData];
 }
-*/
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSDate *object = _objects[indexPath.row];
-        self.detailViewController.detailItem = object;
+        DataEntryDetail *dataEntry = self.openVieData[indexPath.row];
+        self.detailViewController.detailItem = dataEntry;
     }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
-    }
+    DetailViewController *detailController = segue.destinationViewController;
+    DataEntryDetail *dataEntry = [self.openVieData objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+    [detailController setDetailItem:dataEntry];
 }
+
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+//        NSDate *object = self.openVieData[indexPath.row];
+//        [[segue destinationViewController] setDetailItem:object];
+//    }
+//}
 
 @end
