@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "OpenVIE/MasterViewController.m"
-         timestampString = "390089314.615332"
+         timestampString = "390179883.76012"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "84"
-         endingLineNumber = "84"
+         startingLineNumber = "87"
+         endingLineNumber = "87"
          landmarkName = "-fetchedData:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "OpenVIE/MasterViewController.m"
-         timestampString = "390089314.615332"
+         timestampString = "390179883.76012"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "76"
-         endingLineNumber = "76"
+         startingLineNumber = "79"
+         endingLineNumber = "79"
          landmarkName = "-fetchedData:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,7 +34,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "OpenVIE/DetailViewController.h"
-         timestampString = "390094757.977403"
+         timestampString = "390175615.760868"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "9"
@@ -45,25 +45,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "OpenVIE/DetailViewController.m"
-         timestampString = "390093559.707965"
+         timestampString = "390176016.357543"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "25"
-         endingLineNumber = "25"
-         landmarkName = "-setDetailItem:"
+         startingLineNumber = "47"
+         endingLineNumber = "47"
+         landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "OpenVIE/MasterViewController.m"
-         timestampString = "390089314.615332"
+         timestampString = "390179883.76012"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "191"
-         endingLineNumber = "191"
-         landmarkName = "-prepareForSegue:sender:"
+         startingLineNumber = "84"
+         endingLineNumber = "84"
+         landmarkName = "-fetchedData:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -18,8 +18,8 @@
 -(id) initWithProperties:(NSString *)title
                    apiId:(NSString *)apiId
                 district:(int)district
-                  coordX:(float)coordX
-                  coordY:(float)coordY
+                  coordX:(double)coordX
+                  coordY:(double)coordY
               thumbImage:(UIImage *)thumbImage
                fullImage:(UIImage *)fullImage
 {
@@ -35,8 +35,8 @@
 -(id) initWithProperties:(NSString *)title
                    apiId:(NSString *)apiId
                 district:(int)district
-                  coordX:(float)coordX
-                  coordY:(float)coordY
+                  coordX:(double)coordX
+                  coordY:(double)coordY
 {
     return [self initWithProperties:title apiId:apiId district:district coordX:coordX coordY:coordY thumbImage:nil fullImage:nil];
 }

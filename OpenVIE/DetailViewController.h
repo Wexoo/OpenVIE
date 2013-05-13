@@ -7,15 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @class DataEntryDetail;
 
-@interface DetailViewController : UIViewController <UINavigationControllerDelegate>
+@interface DetailViewController : UIViewController <UINavigationControllerDelegate, MKMapViewDelegate>
 
 @property (strong, nonatomic) DataEntryDetail *detailItem;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet MKMapView *detailMapView;
 @property (weak, nonatomic) IBOutlet UISwitch *favoriteCheck;
 
 - (IBAction)favoriteSwitched:(UISwitch *)sender;

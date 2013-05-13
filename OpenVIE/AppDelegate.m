@@ -14,16 +14,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSMutableArray *dataEntries = [[NSMutableArray alloc] init];
-    
-//    DataEntryDetail *entry1 = [[DataEntryDetail alloc] initWithProperties:@"AAAA" apiId:@"CITYBIKEOGD.3533" district:1020 coordX:1.6f coordY:1.6f thumbImage:[UIImage imageNamed:@"thumb_green.jpg"] fullImage:[UIImage imageNamed:@"thumb_green.jpg"]];
-//
-//    [dataEntries addObject:entry1];
-    
-//    UINavigationController * navController = (UINavigationController *) self.window.rootViewController;
-//    MasterViewController * masterController = [navController.viewControllers objectAtIndex:0];
-//    masterController.dataEntries = dataEntries;
-    
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;

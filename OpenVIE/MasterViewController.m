@@ -12,6 +12,7 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "SVProgressHUD.h"
 
 #import "DataEntry.h"
 #import "DataEntryDetail.h"
@@ -48,7 +49,9 @@
     
     self.title = @"OpenVIE - List";
     
+    
     if (!self.openVieData) {
+        [SVProgressHUD showWithStatus:@"Loading data..."];
         dispatch_async(kBgQueue, ^{
             NSString *url = [NSString stringWithContentsOfURL:kLatestKivaLoansURL encoding:NSISOLatin1StringEncoding error:nil];
             NSData* data = [url dataUsingEncoding:NSUTF8StringEncoding];
@@ -81,12 +84,13 @@
         DataEntryDetail *newDataEntry = [[DataEntryDetail alloc] initWithProperties:[propArray objectForKey:@"STATION"]
                          apiId:[feature objectForKey:@"id"]
                                                                            district:(int)[propArray objectForKey:@"BEZIRK"]
-                                                                             coordX:(int)[coordArray objectAtIndex:0]
-                                                                             coordY:(int)[coordArray objectAtIndex:1]
+                                                                             coordX:(float)[[coordArray objectAtIndex:1] floatValue]
+                                                                             coordY:(float)[[coordArray objectAtIndex:0] floatValue]
                                                                          thumbImage:[UIImage imageNamed:@"thumb_green.jpg"]
                                                                           fullImage:[UIImage imageNamed:@"thumb_green.jpg"]];
         [self insertNewObject:self newDataEntry:newDataEntry];
     }
+    [SVProgressHUD dismiss];
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,6 +105,7 @@
     if (!self.openVieData) {
         self.openVieData = [[NSMutableArray alloc] init];
     }
+    // insert at end -> self.openVieData.count -> TODO: find out how to fix indexpath for this
     [self.openVieData insertObject:newDataEntry atIndex:0];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
